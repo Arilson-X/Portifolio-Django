@@ -65,13 +65,14 @@ table {
 }
 
 .banner__titulo {
-    color: #FFFFFF;
+    color: #04244F;
     font-size: 40px;
     width: 350px;
     line-height: 50px;
     position: absolute;
-    top: 80px;
-    left: 80px;
+    top: 50px;
+    right: 50px;
+    font-weight: 600;
 }
 
 .cabecalho {
