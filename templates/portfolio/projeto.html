@@ -1,0 +1,20 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="conteudo">
+                <section class="imagem">
+                    <div class="imagem__conteudo">
+                        <img class="imagem__imagem" src="{{ projeto.imagem.url }}">
+                        <div class="imagem__info">
+                            <div class="imagem__texto">
+                                <p class="imagem__titulo">{{projeto.nome}}</p>
+                                <p class="imagem__descricao">{{projeto.descricao}}</p>
+                                <p class="imagem__texto"></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}

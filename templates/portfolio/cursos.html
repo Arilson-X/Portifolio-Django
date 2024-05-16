@@ -1,0 +1,45 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="conteudo">
+                <section class="tags">
+                    <p class="tags__titulo">Busque por tags:</p>
+                    <ul class="tags__lista">
+                        <li class="tags__tag"><a href="" class="btn" style="color: #c9c9c9;">Analise de Dados</a></li>
+                        <li class="tags__tag"><a href="" class="btn" style="color: #c9c9c9;">Ciencia de dados</a></li>
+                        <li class="tags__tag"><a href="" class="btn" style="color: #c9c9c9;">Aprendizado de Maquina</a></li>
+                        <li class="tags__tag"><a href="" class="btn" style="color: #c9c9c9;">Desenvolvimento</a></li>
+                        <li class="tags__tag"><a href="" class="btn" style="color: #c9c9c9;">Desenvolvimento Pessoal</a></li>
+                    </ul>
+                </section>
+                <section class="galeria">
+                    <div class="cards">
+                        <h2 class="cards__titulo">Navegue pelos cursos</h2>
+                        <ul class="cards__lista">
+                            {% if cursos %}
+                            {% for curso in cursos %}
+                            <li class="card">
+                                <a href="{% url 'curso' curso.id %}">
+                                    <img class="card__imagem" src="{{curso.imagem.url}}" alt="foto">
+                                </a>
+                                <span class="card__tag">{{curso.plataforma}}</span>
+                                <div class="card__info">
+                                    <p class="card__titulo">{{curso.nome}}</p>
+                                    <div class="card__texto">
+                                        <p class="card__descricao">{{curso.descricao}}</p>
+                                        <span>
+                                            <img src="{% static 'assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            {% else %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}

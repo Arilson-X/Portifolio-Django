@@ -1,0 +1,66 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="conteudo">
+                <section class="banner">
+                    <img class="banner__imagem" src="{% static 'assets/imagens/Banner(2).png' %}" alt="banner Alura Space">
+                    <h1 class="banner__titulo"> A galeria mais completa de fotos do espaço!</h1>
+                </section>
+                <section class="tags">
+                    <p class="tags__titulo">Busque por tags:</p>
+                    <ul class="tags__lista">
+                        <li class="tags__tag"><a href="{% url 'filtro' 'AD' %}" class="btn" style="color: #c9c9c9;">Analise de Dados</a></li>
+                        <li class="tags__tag"><a href="{% url 'filtro' 'CD' %}" class="btn" style="color: #c9c9c9;">Ciencia de dados</a></li>
+                        <li class="tags__tag"><a href="{% url 'filtro' 'AM' %}" class="btn" style="color: #c9c9c9;">Aprendizado de Maquina</a></li>
+                        <li class="tags__tag"><a href="{% url 'filtro' 'D' %}" class="btn" style="color: #c9c9c9;">Desenvolvimento</a></li>
+                        <li class="tags__tag"><a href="{% url 'filtro' 'DP' %}" class="btn" style="color: #c9c9c9;">Desenvolvimento Pessoal</a></li>
+                    </ul>
+                </section>
+                <section class="galeria">
+                    <div class="cards">
+                        {% if projetos %}
+                        <h2 class="cards__titulo">Projetos:</h2>
+                        <ul class="cards__lista">
+                            {% for projeto in projetos %}
+                            <li class="card">
+                                <a href="{% url 'projeto' projeto.id %}">
+                                    <img class="card__imagem" src="{{projeto.imagem.url}}" alt="imagem">
+                                </a>
+                                <span class="card__tag">{{projeto.tipo}}</span>
+                                <div class="card__info">
+                                    <p class="card__titulo">{{projeto.nome}}</p>
+                                    <div class="card__texto">
+                                        <p class="card__descricao">{{projeto.descricao}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        {% else %}
+                        {% endif %}
+                        </ul>
+                        {% if cursos %}
+                        <h2 class="cards__titulo">Cursos:</h2>
+                        <ul class="cards__lista">
+                            {% for curso in cursos %}
+                            <li class="card">
+                                <a href="{% url 'curso' curso.id %}">
+                                    <img class="card__imagem" src="{{curso.imagem.url}}" alt="imagem">
+                                </a>
+                                <span class="card__tag">{{curso.plataforma}}</span>
+                                <div class="card__info">
+                                    <p class="card__titulo">{{curso.nome}}</p>
+                                    <div class="card__texto">
+                                        <p class="card__descricao">{{curso.descricao}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        {% else %}
+                        {% endif %}
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}
